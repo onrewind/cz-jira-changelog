@@ -131,8 +131,6 @@ module.exports = function (options) {
         // Wrap these lines at 100 characters
         var body = wrap(answers.body, wrapOptions);
 
-        var comment = wrap(answers.comment ? '#comment ' + answers.comment : undefined);
-
         // Apply breaking change prefix, removing it if already present
         var breaking = answers.breaking ? answers.breaking.trim() : '';
         breaking = breaking ? 'BREAKING CHANGE: ' + breaking.replace(/^BREAKING CHANGE: /, '') : '';
@@ -142,9 +140,10 @@ module.exports = function (options) {
 
         var workflow = answers.workflow ? '#' + answers.workflow : undefined;
         var time = answers.time ? '#time ' + answers.time : undefined;
-        var footer = filter([ breaking, issues, time, workflow ]).join('\n\n');
+        var comment = wrap(answers.comment ? '#comment ' + answers.comment : undefined);
+        var footer = filter([ breaking, issues, time, workflow, comment ]).join('\n\n');
 
-        commit(head + '\n\n' + body + + '\n' + comment + '\n\n' + footer);
+        commit(head + '\n\n' + body + '\n\n' + footer);
       });
     }
   };
