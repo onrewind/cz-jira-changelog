@@ -140,10 +140,10 @@ module.exports = function (options) {
 
         var workflow = answers.workflow ? '#' + answers.workflow : undefined;
         var time = answers.time ? '#time ' + answers.time : undefined;
-        var comment = wrap(answers.comment ? '#comment ' + answers.comment : undefined);
-        var footer = filter([ breaking, issues, time, workflow, comment ]).join('\n\n');
+        var comment = answers.comment ? '#comment ' + answers.comment : undefined;
+        var footer = filter([issues, time, workflow, comment ]).join(' ');
 
-        commit(head + '\n\n' + body + '\n\n' + footer);
+        commit(head + '\n\n' + body + '\n\n' + breaking + '\n\n' + footer);
       });
     }
   };

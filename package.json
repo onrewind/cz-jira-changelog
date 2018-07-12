@@ -1,6 +1,6 @@
 {
   "name": "cz-jira-changelog",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Commitizen adapter following the conventional-changelog and jira's smart commits format.",
   "main": "index.js",
   "scripts": {
@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "commitizen": "^2.10.1",
-    "semantic-release": "^15.6.4"
+    "semantic-release": "^15.7.1"
   },
   "config": {
     "commitizen": {
